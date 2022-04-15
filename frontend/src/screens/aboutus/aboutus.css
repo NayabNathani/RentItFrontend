@@ -1,0 +1,14 @@
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    padding: 2%;
+    text-align: center;
+  }
+  
+  .title1 {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  
