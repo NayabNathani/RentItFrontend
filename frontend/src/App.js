@@ -11,6 +11,7 @@ import SearchPage from './screens/searchresult/SearchPage'
 import InsertApart from './screens/insertapart/InsertApart'
 import BookPage from './screens/bookpage/BookingPg'
 import AdvSlider from './components/Adv-Slider/advSlider'
+import ApartDetails from './screens/apartdetails/apartDetails'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/adv-sign-login" element={< AdvSignLogin/>} />
           <Route path="/search-page" element={< SearchPage/>} />
           <Route path="/insertapart-page" element={< InsertApart/>} />
+          <Route path="/apartdetails-page" element={< ApartDetails/>} />
           <Route path="/book-page" element={< BookPage/>} />
           <Route path="/advSlider" element={< AdvSlider/>} />
           </Routes>
