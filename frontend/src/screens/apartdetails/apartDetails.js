@@ -1,38 +1,43 @@
 import React, { useState } from 'react';
 import Form from "react-bootstrap/Form";
-// import './InsertApart.css';
 import axios from 'axios';
 import Footer from '../../components/footer'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../Index/image/Logo.png'
-import './InsertApart.css'
+import './apartDetails.css'
 
 function InsertApart() {
     const navigate = useNavigate();
     const [fileInputState, setFileInputState] = useState("");
-    const [previewSource, setPreviewSource] = useState('');
-    const [Title, setTitle] = useState("");
-    const [City, setCity] = useState("");
-    const [Descrip, setDescrip] = useState("");
+    const [previewSource, setPreviewSource] = useState([]);
     const [HostID, setHostID] = useState();
-    const [priceperday, setPrice] = useState();
+    const [count, setCount] = useState(0);
+    const [rooms, setRooms] = useState(0);
+    const [type, setType] = useState("cabin");
+    const [address, setAddress] = useState("");
+
+    const file = [];
 
     function validatForm() {
-        return Title.length > 0 && City.length > 0 && Descrip.length > 0 && priceperday.length > 0 && previewSource.length > 0;
+        return rooms.length > 0 && type.length > 0 && address.length > 0 && previewSource.length > 0;
     }
 
-    const handleFileInputChange = (e) => {
+        const handleFileInputChange = (e) => {
         e.preventDefault();
-        const file = e.target.files[0];
-        console.log(file);
-        previewFile(file);
+        file[count] = e.target.files[0];
+        console.log(file[count]);
+        previewFile(file[count]);
     };
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             console.log(reader.result);
-            setPreviewSource(reader.result);
+            let newArr = [...previewSource];
+            newArr[count] = reader.result;
+            //console.log(newArr[count]);
+            setPreviewSource(newArr);
+            //console.log(previewSource);
         };
     };
     const handleSubmitFile = (e) => {
@@ -43,27 +48,27 @@ function InsertApart() {
 
     const uploadImage = (base64EncodedImage) => {
         console.log("UploadImage!");
-        console.log(base64EncodedImage);
-        // axios.post("http://localhost:3001/apartment/insert", {
-        //     image_info: base64EncodedImage,
-        //     Title: Title,
-        //     Descrip: Descrip,
-        //     priceperday: priceperday,
-        //     City: City,
-        //     HostID: 2,
-        // }).then(() => {
-        //     console.log("Success");
-        // })
-        localStorage.setItem("apartInfo", JSON.stringify({
-            image_info: base64EncodedImage,
-            Title: Title,
-            Descrip: Descrip,
-            priceperday: priceperday,
-            City: City,
-            HostID: 3
-        }))
-        console.log("done");
-        navigate('/apartdetails-page');
+        const apartInfo = JSON.parse(localStorage.getItem("apartInfo"));
+        console.log(...base64EncodedImage);
+        axios.post("http://localhost:3001/hosts/apartments", {
+            City: apartInfo.City,
+            Title: apartInfo.Title,
+            Descrip: apartInfo.Descrip,
+            HostID: apartInfo.HostID,
+            priceperday: apartInfo.priceperday,
+            img: apartInfo.image_info,
+            address: address,
+            placeType: type,
+            rooms: rooms,
+            img1: base64EncodedImage[0],
+            img2: base64EncodedImage[1],
+            img3: base64EncodedImage[2]
+        }).then(() => {
+            console.log("Success");
+        })
+        // for(let i = 0; i < 3; i++) {
+        //     console.log(base64EncodedImage[i]);
+        // } 
     }
 
 
@@ -126,11 +131,32 @@ function InsertApart() {
         <div className='box'>
             <h1> UPLOAD APPARTMENT </h1>
             <br/>
-            <form className="form" onSubmit={handleSubmitFile}>
+            <form className="form" onSubmit={ (e) => {
+                if(validatForm()) {
+                    handleSubmitFile(e);
+                }
+                else {
+                    e.preventDefault();
+                    alert("Some values missing!!");
+                }
+            }}>
 
             {/*Picture*/}    
-            <div class="upload-btn-wrapper">
-            <button class="btn123">Click Here to Upload appartment pictures</button>
+            <div class="upload-btn-wrapper" onClick={ () => {setCount(0)} }>
+            <button class="btn123">Click Here to Upload additional picture (1)</button>
+                <input 
+                    id="fileInput"
+                    type="file"
+                    name="image"
+                    value={fileInputState}
+                    onChange={handleFileInputChange}
+                    className="form-input"
+                    multiple
+                />
+            </div>
+
+            <div class="upload-btn-wrapper" onClick={ () => {setCount(1)} }>
+            <button class="btn123">Click Here to Upload additional picture (2)</button>
                 <input
                     id="fileInput"
                     type="file"
@@ -138,53 +164,60 @@ function InsertApart() {
                     value={fileInputState}
                     onChange={handleFileInputChange}
                     className="form-input"
-                /></div>
+                    multiple
+                />
+            </div>
+
+            <div class="upload-btn-wrapper" onClick={ () => {setCount(2)} }>
+            <button class="btn123">Click Here to Upload additional picture (3)</button>
+                <input
+                    id="fileInput"
+                    type="file"
+                    name="image"
+                    value={fileInputState}
+                    onChange={handleFileInputChange}
+                    className="form-input"
+                    multiple
+                />
+            </div>
                 <br/><br/>
 
-                {/*Title*/}
-                <Form.Group size="lg" controlId="title">
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                type="text"
-                value={Title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                </Form.Group>
 
-                {/*Description*/}
+                {/*Address*/}
                 <Form.Group size="lg" controlId="description">
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Address</Form.Label>
                 <Form.Control
                 type="text"
-                value={Descrip}
-                onChange={(e) => setDescrip(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 />
                 </Form.Group>
 
-                {/*City*/}
-                <Form.Group size="lg" controlId="city">
-                <Form.Label>City</Form.Label>
-                <Form.Control
-                type="text"
-                value={City}
-                onChange={(e) => setCity(e.target.value)}
-                />
-                </Form.Group>
+                <label>
+                Place Type
+                <select className="types" value={type} onChange={(e) => {setType(e.target.value)}}>            
+                    <option value="cabin">Cabin</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="house">House</option>
+                    <option value="suite">Suite</option>
+                    <option value="condo">Condo</option>
+                </select>
+                </label>
 
-                {/*Price*/}
-                <Form.Group size="lg" controlId="price">
-                <Form.Label>PricePerNight</Form.Label>
+                {/*rooms*/}
+                <Form.Group size="lg" controlId="room">
+                <Form.Label>Rooms</Form.Label>
                 <Form.Control
                 type="number"
-                value={priceperday}
-                onChange={(e) => setPrice(e.target.value)}
+                value={rooms}
+                onChange={(e) => setRooms(e.target.value)}
                 />
                 </Form.Group>
                 <br/>
 
 
                 <button type="submit" class='genric-btn primary e-large'>
-                    Next
+                    Submit
                 </button>
             </form>
             {/* <button onClick = {() => {
@@ -193,13 +226,13 @@ function InsertApart() {
                 }}>
                     Logout
             </button> */}
-            {previewSource && (
+            {/* {previewSource.map( e => 
                 <img
-                    src={previewSource}
+                    src={e}
                     alt="chosen"
                     style={{ height: '300px' }}
                 />
-            )}
+            )} */}
         </div>
         </div>
         <Footer/></>
