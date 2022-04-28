@@ -4,7 +4,7 @@ import './SearchPage.css';
 import SearchResult from './SearchResult'
 import { Button } from "@material-ui/core";
 import logo from '../Index/image/Logo.png'
-// import axios from 'axios';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Footer from '../../components/footer'
 import AdvSlider from '../../components/Adv-Slider/advSlider'
@@ -13,25 +13,25 @@ import AdvSlider from '../../components/Adv-Slider/advSlider'
 function SearchPage() {
     const [apartDetails, setApartDetails] = useState([]);
     const params = useParams();
-    // useEffect(async () => {
-    //     const city = params.searchresult
-    //     let aparts = await axios.post("http://localhost:3001/searching", {
-    //         City: city
-    //     }); 
-    //     console.log(aparts)
-    //     //const responseJson = await fullResponse.json();
-    //     setApartDetails(aparts.data.data);
-    //     console.log(aparts.data.data)
-    // }
-    // ,[]) 
+    useEffect(async () => {
+        //const city = params.searchresult
+        let aparts = await axios.get("http://localhost:3001/temp_customers/searchResults"); 
+        console.log("aparts");
+        console.log(aparts.data[0]);
+        //const responseJson = await fullResponse.json();
+        setApartDetails(aparts.data);
+        console.log("aparts.data.data");
+        console.log(aparts.data)
+    }
+    ,[]) 
 
     return (
         <>
         <div className='searchPage_info'>
             {/* <Header /> */}
             <header class="header_area" >
-      <div class="container" id="borderHeader">
-          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container" id="borderHeader">
+            <nav class="navbar navbar-expand-lg navbar-light">
 
               <a class="navbar-brand logo_h" href="index.html"><img src={logo} alt=""/></a>
 
@@ -83,6 +83,7 @@ function SearchPage() {
   
 
   <div id='searchBody'>
+    <br/><br/><br/><br/><br/>
             {/* <div className='searchPage__info'>
                 <br/><br/><br/><br/><br/>
                 <p>62 stays · 26 august to 30 august · 2 guest</p>
@@ -93,21 +94,27 @@ function SearchPage() {
                 <Button variant="outlined">Rooms and beds</Button>
                 <Button variant="outlined">More filters</Button>
             </div> */}
-{/* 
+
             {apartDetails.map((apart) => (
                 <SearchResult
                 id={apart.apartmentID}
-                img={apart.image_info}
+                img={apart.img}
                 location={apart.City}
                 title={apart.Title}
                 description={apart.Descrip}
-                hearts={4.73}
                 price={apart.priceperday}
-                total="£117 total"
+                total={990}
+                // total={() => {
+                //     let date1 = JSON.parse(localStorage.getItem("start"));
+                //     let date2 = JSON.parse(localStorage.getItem("end")); 
+                //     let diff = date1.endDate.getTime() - date2.startDate.getTime();
+                //     let total = 0;
+                //     return (total = diff / (1000 * 3600 * 24));
+                // }}
             />
-            ))} */}
-                <br/><br/><br/><br/><br/>
-            <SearchResult
+            ))}
+                {/* <br/><br/><br/><br/><br/> */}
+            {/* <SearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
                 location="Private room in center of London"
                 title="Stay at this spacious Edwardian House"
@@ -169,9 +176,9 @@ function SearchPage() {
                 title="5 Star Luxury Apartment"
                 description="3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine"
                 hearts={3.85}
-                price="£90 / night"
+                price="£90"
                 total="£650 total"
-            />
+            /> */}
             <br/>
         </div>
         

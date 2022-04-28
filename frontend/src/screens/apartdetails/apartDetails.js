@@ -10,11 +10,7 @@ function InsertApart() {
     const navigate = useNavigate();
     const [fileInputState, setFileInputState] = useState("");
     const [previewSource, setPreviewSource] = useState([]);
-    // const [Title, setTitle] = useState("");
-    // const [City, setCity] = useState("");
-    // const [Descrip, setDescrip] = useState("");
     const [HostID, setHostID] = useState();
-    // const [priceperday, setPrice] = useState();
     const [count, setCount] = useState(0);
     const [rooms, setRooms] = useState(0);
     const [type, setType] = useState("cabin");

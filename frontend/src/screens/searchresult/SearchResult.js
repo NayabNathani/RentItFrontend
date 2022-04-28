@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SearchResult.css';
+import { Image } from 'cloudinary-react';
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import StarIcon from "@material-ui/icons/Star";
 // import { useHistory } from 'react-router-dom';
@@ -10,7 +11,6 @@ function SearchResult({
     location,
     title,
     description,
-    hearts,
     price,
     total,
 }) {
@@ -21,7 +21,6 @@ function SearchResult({
         location: location,
         title: title,
         description: description, 
-        hearts: hearts,
         price: price,
         total: total
     })
@@ -35,9 +34,9 @@ function SearchResult({
     return (
         <>
         <div class='divBoxPos'>
-                <div className='searchResult' >
+            <div className='searchResult' >
             {/* onClick = {handleOnSubmit} */}
-            <img src={img} alt="" />
+            <Image cloudName="teejayycloud" publicId={img} />
             {/* onClick = {handleOnSubmit} */}
             {/* <div className="searchResult__hearts">
                 <FavoriteBorderIcon className='searchResult_heart' />
@@ -63,8 +62,8 @@ function SearchResult({
                         </p>
                     </div> */}
                     <div className='searchResults__price'>
-                        <h2>{price}</h2>
-                        <p>{total}</p>
+                        <h2>Rs{price} / Night</h2>
+                        <p>Rs{total} total</p>
                     </div>
                 </div>
             </div>
