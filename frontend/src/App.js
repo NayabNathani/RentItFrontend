@@ -12,6 +12,7 @@ import InsertApart from './screens/insertapart/InsertApart'
 import BookPage from './screens/bookpage/BookingPg'
 import AdvSlider from './components/Adv-Slider/advSlider'
 import ApartDetails from './screens/apartdetails/apartDetails'
+import HostHome from './screens/hosthomepage/SearchPage'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/apartdetails-page" element={< ApartDetails/>} />
           <Route path="/book-page" element={< BookPage/>} />
           <Route path="/advSlider" element={< AdvSlider/>} />
+          <Route path="/hosthome" element={< HostHome/>} />
           </Routes>
       </Router>
     </div>
