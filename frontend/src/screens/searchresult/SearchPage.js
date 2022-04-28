@@ -95,7 +95,7 @@ function SearchPage() {
                 <Button variant="outlined">More filters</Button>
             </div> */}
 
-            {apartDetails.map((apart) => (
+            {/* {apartDetails.map((apart) => (
                 <SearchResult
                 id={apart.apartmentID}
                 img={apart.img}
@@ -112,9 +112,9 @@ function SearchPage() {
                 //     return (total = diff / (1000 * 3600 * 24));
                 // }}
             />
-            ))}
+            ))} */}
                 {/* <br/><br/><br/><br/><br/> */}
-            {/* <SearchResult
+            <SearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
                 location="Private room in center of London"
                 title="Stay at this spacious Edwardian House"
@@ -178,7 +178,7 @@ function SearchPage() {
                 hearts={3.85}
                 price="£90"
                 total="£650 total"
-            /> */}
+            />
             <br/>
         </div>
         
