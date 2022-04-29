@@ -85,7 +85,7 @@ function InsertApart() {
 
               <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                   <ul class="nav navbar-nav menu_nav ml-auto">
-                      <li class="nav-item"><a class="nav-link"><Link to="/insertapart-page">Insert Appartment</Link></a></li>
+                      <li class="nav-item active" ><a class="nav-link"><Link to="/insertapart-page">Insert Appartment</Link></a></li>
                                             
                       <li class="nav-item submenu dropdown">
                       <li class="nav-item"></li>
