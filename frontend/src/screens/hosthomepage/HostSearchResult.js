@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './SearchResult.css';
+import './HostSearchResult.css';
 import { Image } from 'cloudinary-react';
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import StarIcon from "@material-ui/icons/Star";
 // import { useHistory } from 'react-router-dom';
 
-function SearchResult({
+function HostSearchResult({
     id,
     img,
     location,
@@ -76,4 +76,4 @@ function SearchResult({
     )
 }
 
-export default SearchResult
+export default HostSearchResult
