@@ -7,6 +7,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import logo from '../Index/image/Logo.png'
 import './InsertApart.css'
 
+
 function InsertApart() {
     const navigate = useNavigate();
     const [fileInputState, setFileInputState] = useState("");

@@ -6,6 +6,8 @@ import "./styles.css";
 import Logo1 from './images/Logo.png'
 import { useNavigate, useParams, Link } from "react-router-dom";
 import logo from '../../screens/Index/image/Logo.png'
+import LoginHeader from "../loginHeader/LoginHeader";
+
 
 function HostSignLogin() {
     const [signIn, toggle] = React.useState(true);
@@ -76,44 +78,8 @@ function HostSignLogin() {
 
   return (
       <>
-<header class="header_area">
-      <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light">
 
-              <a class="navbar-brand logo_h" href="index.html"><img src={logo} alt=""/></a>
-              
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-
-              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                  <ul class="nav navbar-nav menu_nav ml-auto">
-                      <li class="nav-item"><a class="nav-link"><Link to="/">Home</Link></a></li> 
-                      <li class="nav-item"><a class="nav-link"><Link to="/aboutus">About Us</Link></a></li>
-                      <li class="nav-item"><a class="nav-link"><Link to="/contact">Contact</Link></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-                      <li class="nav-item"><a class="nav-link"></a></li>
-
-                  </ul>
-              </div> 
-          </nav>
-      </div>
-  </header>
+<LoginHeader/>
 
   {/* <!--================Breadcrumb Area =================--> */}
   <section class="breadcrumb_area">

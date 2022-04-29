@@ -1,0 +1,9 @@
+/* #borderHeader{
+    border-bottom: 0.5px solid #04091e;
+} */
+
+.searchBar{
+    margin-top: 20px;
+    padding-right: 100px;
+    padding-top: 2px;
+}
