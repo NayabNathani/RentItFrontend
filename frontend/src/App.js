@@ -13,7 +13,7 @@ import BookPage from './screens/bookpage/BookingPg'
 import AdvSlider from './components/Adv-Slider/advSlider'
 import ApartDetails from './screens/apartdetails/apartDetails'
 import HostHome from './screens/hosthomepage/hostSearchPage'
-import CusHome from './screens/customerhome/cusSearchPage'
+import CusHome from './screens/customerhome/customerhome'
 
 function App() {
   return (
