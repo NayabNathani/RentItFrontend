@@ -15,6 +15,7 @@ function InsertApart() {
     const [rooms, setRooms] = useState(0);
     const [type, setType] = useState("cabin");
     const [address, setAddress] = useState("");
+    const [flag, setFlag] = useState(false);
 
     const file = [];
 
@@ -46,11 +47,11 @@ function InsertApart() {
         uploadImage(previewSource);
     }
 
-    const uploadImage = (base64EncodedImage) => {
+    const uploadImage = async (base64EncodedImage) => {
         console.log("UploadImage!");
         const apartInfo = JSON.parse(localStorage.getItem("apartInfo"));
         console.log(...base64EncodedImage);
-        axios.post("http://localhost:3001/hosts/apartments", {
+        await axios.post("http://localhost:3001/hosts/apartments", {
             City: apartInfo.City,
             Title: apartInfo.Title,
             Descrip: apartInfo.Descrip,
@@ -64,11 +65,9 @@ function InsertApart() {
             img2: base64EncodedImage[1],
             img3: base64EncodedImage[2]
         }).then(() => {
-            console.log("Success");
+            navigate('/hosthome/' + 0);
         })
-        // for(let i = 0; i < 3; i++) {
-        //     console.log(base64EncodedImage[i]);
-        // } 
+        setFlag(true);
     }
 
 
@@ -137,7 +136,7 @@ function InsertApart() {
                 }
                 else {
                     e.preventDefault();
-                    alert("Some values missing!!");
+                    setFlag(true);
                 }
             }}>
 
@@ -215,6 +214,8 @@ function InsertApart() {
                 </Form.Group>
                 <br/>
 
+                {flag && validatForm() && <h2>Kindly wait while we process the information!!:D</h2>}
+                {flag && !validatForm() && <h2>Kindly provide the complete information!!;)</h2>}
 
                 <button type="submit" class='genric-btn primary e-large'>
                     Submit

@@ -6,6 +6,7 @@ import Footer from '../../components/footer'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../Index/image/Logo.png'
 import './InsertApart.css'
+import HostHeader from '../../components/HostHeader/HostHeader'
 
 
 function InsertApart() {
@@ -17,6 +18,7 @@ function InsertApart() {
     const [Descrip, setDescrip] = useState("");
     const [HostID, setHostID] = useState();
     const [priceperday, setPrice] = useState();
+    const [flag, setFlag] = useState(false);
 
     function validatForm() {
         return Title.length > 0 && City.length > 0 && Descrip.length > 0 && priceperday.length > 0 && previewSource.length > 0;
@@ -38,30 +40,23 @@ function InsertApart() {
     };
     const handleSubmitFile = (e) => {
         e.preventDefault();
-        if (!previewSource) return;
+        if (!previewSource) {
+            setFlag(true);
+        };
         uploadImage(previewSource);
     }
 
     const uploadImage = (base64EncodedImage) => {
+        let userdata = JSON.parse(localStorage.getItem("userdata"));
         console.log("UploadImage!");
         console.log(base64EncodedImage);
-        // axios.post("http://localhost:3001/apartment/insert", {
-        //     image_info: base64EncodedImage,
-        //     Title: Title,
-        //     Descrip: Descrip,
-        //     priceperday: priceperday,
-        //     City: City,
-        //     HostID: 2,
-        // }).then(() => {
-        //     console.log("Success");
-        // })
         localStorage.setItem("apartInfo", JSON.stringify({
             image_info: base64EncodedImage,
             Title: Title,
             Descrip: Descrip,
             priceperday: priceperday,
             City: City,
-            HostID: 3
+            HostID: userdata.HostID
         }))
         console.log("done");
         navigate('/apartdetails-page');
@@ -72,46 +67,7 @@ function InsertApart() {
     return (
         <>
         {/* HEADER AREA */}
-        <header class="header_area">
-      <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light">
-
-              <a class="navbar-brand logo_h" href="index.html"><img src={logo} alt=""/></a>
-              
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-
-              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                  <ul class="nav navbar-nav menu_nav ml-auto">
-                      <li class="nav-item active" ><a class="nav-link"><Link to="/insertapart-page">Insert Appartment</Link></a></li>
-                                            
-                      <li class="nav-item submenu dropdown">
-                      <li class="nav-item"></li>
-                          <a href="#" class="nav-link dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Appartments</a>
-                          <ul class="dropdown-menu">
-                              <li class="nav-item"><a class="nav-link"><Link to="/hosthome">Listed</Link></a></li>
-                              <li class="nav-item"><a class="nav-link"><Link to="">Booked</Link></a></li>
-                          </ul>
-                      </li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"><a class="nav-link"><Link to="/">Sign Out</Link></a></li>
-                  </ul>
-              </div> 
-          </nav>
-      </div>
-  </header> 
+        <HostHeader/>
 
   {/* HEADER AREA FINISH */}
 
@@ -131,7 +87,9 @@ function InsertApart() {
         <div className='box'>
             <h1> UPLOAD APPARTMENT </h1>
             <br/>
-            <form className="form" onSubmit={handleSubmitFile}>
+            <form className="form" onSubmit={(e) => {
+                e.preventDefault();
+            }}>
 
             {/*Picture*/}    
             <div class="upload-btn-wrapper">
@@ -188,8 +146,16 @@ function InsertApart() {
                 </Form.Group>
                 <br/>
 
+                {flag && <h2>Kindly provide the complete information!!;)</h2>}
 
-                <button type="submit" class='genric-btn primary e-large'>
+                <button type="submit" class='genric-btn primary e-large' onClick={(e) => {
+                    if(validatForm()) {
+                        handleSubmitFile(e);
+                    }
+                    else {
+                        setFlag(true);
+                    }
+                }}>
                     Next
                 </button>
             </form>

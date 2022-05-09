@@ -28,7 +28,6 @@ function CusSearchPage() {
     ,[]) 
 
     return (
-        <>
         <div className='searchPage_info'>
             <CusHeader/>
             
@@ -45,8 +44,8 @@ function CusSearchPage() {
             </div>
         </section>
 
-  <div id='searchBody'>
-    <br/><br/><br/><br/><br/>
+  {/* <div id='searchBody'>
+    <br/><br/><br/><br/><br/> */}
             {/* <div className='searchPage__info'>
                 <br/><br/><br/><br/><br/>
                 <p>62 stays · 26 august to 30 august · 2 guest</p>
@@ -77,7 +76,7 @@ function CusSearchPage() {
             />
             ))} */}
                 {/* <br/><br/><br/><br/><br/> */}
-            <CusSearchResult
+            {/* <CusSearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
                 location="Private room in center of London"
                 title="Stay at this spacious Edwardian House"
@@ -143,12 +142,9 @@ function CusSearchPage() {
                 total="£650 total"
             />
             <br/>
+        </div> */}
+        <Footer/>
         </div>
-        
-        </div>
-        {/* <AdvSlider/> */}
-        
-        <Footer/></>
     )
 }
 

@@ -1,74 +1,66 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom'
 import './hostSearchPage.css';
 import HostSearchResult from './HostSearchResult'
-import { Button } from "@material-ui/core";
-import logo from '../Index/image/Logo.png'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import Footer from '../../components/footer'
+import HostHeader from '../../components/HostHeader/HostHeader'
 // import AdvSlider from '../../components/Adv-Slider/advSlider'
 // import Header from './Header';
 
-function HostSearchPage() {
+function HostSearchPage(props) {
     const [apartDetails, setApartDetails] = useState([]);
+    const [flag, setFlag] = useState(false);
     const params = useParams();
+
+
     useEffect(async () => {
-        //const city = params.HostSearchResult
-        let aparts = await axios.get("http://localhost:3001/temp_customers/searchResults"); 
-        console.log("aparts");
-        console.log(aparts.data[0]);
-        //const responseJson = await fullResponse.json();
-        setApartDetails(aparts.data);
-        console.log("aparts.data.data");
-        console.log(aparts.data)
+        let userdata = JSON.parse(localStorage.getItem("userdata"));
+        console.log(params.flag);
+        if(params.flag == '0'){
+            let aparts = await axios.get("http://localhost:3001/hosts/listapartments", {
+                params: {
+                    HostID: userdata.HostID
+                }
+            }); 
+            if(aparts.data.statusCode == false) {
+                setFlag(true);
+            }
+            else {
+                setApartDetails(aparts.data);
+                setFlag(false);
+            }
+        }
+        else {
+            //const city = params.HostSearchResult
+            console.log("booked");
+            let aparts = await axios.get("http://localhost:3001/hosts/bookedapartments", {
+                params: {
+                    HostID: 5
+                }
+            });
+            console.log(aparts);
+            if(aparts.data.statusCode == false) {
+                setFlag(true);
+            } 
+            else {
+                console.log("aparts");
+                console.log(aparts.data[0]);
+                //const responseJson = await fullResponse.json();
+                setApartDetails(aparts.data);
+                setFlag(false);
+                console.log("aparts.data.data");
+                console.log(aparts.data);
+            }
+        }
     }
-    ,[]) 
+    ,[params.flag]) 
 
     return (
         <>
         <div className='searchPage_info'>
             {/* <Header /> */}
-            <header class="header_area">
-      <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light">
-
-              <a class="navbar-brand logo_h" href="index.html"><img src={logo} alt=""/></a>
-              
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-
-              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                  <ul class="nav navbar-nav menu_nav ml-auto">
-                      <li class="nav-item"><a class="nav-link"><Link to="/insertapart-page">Insert Appartment</Link></a></li>
-                                            
-                      <li class="nav-item submenu dropdown">
-                      <li class="nav-item"></li>
-                          <a href="#" class="nav-link dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Appartments</a>
-                          <ul class="dropdown-menu">
-                              <li class="nav-item"><a class="nav-link"><Link to="/hosthome">Listed</Link></a></li>
-                              <li class="nav-item"><a class="nav-link"><Link to="">Booked</Link></a></li>
-                          </ul>
-                      </li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                      <li class="nav-item"><a class="nav-link"><Link to="/">Sign Out</Link></a></li>
-                  </ul>
-              </div> 
-          </nav>
-      </div>
-  </header> 
+         <HostHeader/>
 
   {/* HEADER AREA FINISH */}
 
@@ -76,7 +68,7 @@ function HostSearchPage() {
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Search Appartment</h2>
+                    <h2 class="page-cover-tittle">Listed Appartment</h2>
                     <ol class="breadcrumb">
                         <li class="active"><a href="index.html"></a></li>
                     </ol>
@@ -96,8 +88,8 @@ function HostSearchPage() {
                 <Button variant="outlined">Rooms and beds</Button>
                 <Button variant="outlined">More filters</Button>
             </div> */}
-
-            {/* {apartDetails.map((apart) => (
+            {flag && <h1>No entries as of yet!!</h1>}
+            {!flag && apartDetails.map((apart) => (
                 <HostSearchResult
                 id={apart.apartmentID}
                 img={apart.img}
@@ -105,7 +97,6 @@ function HostSearchPage() {
                 title={apart.Title}
                 description={apart.Descrip}
                 price={apart.priceperday}
-                total={990}
                 // total={() => {
                 //     let date1 = JSON.parse(localStorage.getItem("start"));
                 //     let date2 = JSON.parse(localStorage.getItem("end")); 
@@ -114,9 +105,11 @@ function HostSearchPage() {
                 //     return (total = diff / (1000 * 3600 * 24));
                 // }}
             />
-            ))} */}
+            ))}
                 {/* <br/><br/><br/><br/><br/> */}
-            <HostSearchResult
+
+
+            {/* <HostSearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
                 location="Private room in center of London"
                 title="Stay at this spacious Edwardian House"
@@ -180,7 +173,7 @@ function HostSearchPage() {
                 hearts={3.85}
                 price="£90"
                 total="£650 total"
-            />
+            /> */}
             <br/>
         </div>
         
