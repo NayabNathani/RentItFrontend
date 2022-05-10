@@ -33,6 +33,7 @@ function HostSignLogin() {
         }).then(() => {
             alert("Insert Success");
         })
+        toggle(true);
       }
 
       async function handleSigninSubmit() {
@@ -51,7 +52,8 @@ function HostSignLogin() {
           // set the state of the user
             setUser(response.data);
             console.log(user);
-            //localStorage.setItem("userdata", JSON.stringify(response.data));
+            localStorage.setItem("userdata", JSON.stringify(response.data));
+            navigate("/hosthome/" + 0);
             //let userdata = JSON.parse(localStorage.getItem("userdata"));
             //console.log(userdata.customerid)
             // store the user in localStorage

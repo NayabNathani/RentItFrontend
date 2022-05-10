@@ -25,12 +25,17 @@ function App() {
           <Route path="/host-sign-login" element={< HostSignLogin/>} />
           <Route path="/cus-sign-login" element={< CusSignLogin/>} />
           <Route path="/adv-sign-login" element={< AdvSignLogin/>} />
-          <Route path="/search-page" element={< SearchPage/>} />
+          <Route path="/search-page/:city/:flag" element={< SearchPage/>} />
           <Route path="/insertapart-page" element={< InsertApart/>} />
           <Route path="/apartdetails-page" element={< ApartDetails/>} />
           <Route path="/book-page" element={< BookPage/>} />
+<<<<<<< HEAD
           {/* <Route path="/advSlider" element={< AdvSlider/>} /> */}
           <Route path="/hosthome" element={< HostHome/>} />
+=======
+          <Route path="/advSlider" element={< AdvSlider/>} />
+          <Route path="/hosthome/:flag" element={< HostHome/>} exact/>
+>>>>>>> master
           <Route path="/cusHome" element={< CusHome/>} />
           </Routes>
       </Router>

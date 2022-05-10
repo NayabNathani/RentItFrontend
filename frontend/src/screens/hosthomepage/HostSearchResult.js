@@ -12,7 +12,6 @@ function HostSearchResult({
     title,
     description,
     price,
-    total,
 }) {
     // const history = useHistory();
     const [state, setState] = useState({
@@ -22,7 +21,6 @@ function HostSearchResult({
         title: title,
         description: description, 
         price: price,
-        total: total
     })
     console.log(id);
     // const handleOnSubmit = () => {
@@ -65,7 +63,7 @@ function HostSearchResult({
                     <div className='searchResults__price'>
                     <button href="#" class="genric-btn default-border circle">
                         <h2>Rs{price} / Night</h2>
-                        <p>Rs{total} total</p></button>
+                    </button>
                     </div>
                 </div>
             </div>
