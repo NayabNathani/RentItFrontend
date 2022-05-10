@@ -41,3 +41,10 @@
     font-size: 20px;
     font-weight: bold;
   }
+
+  .labelBorder{
+    border: 0.5px yellow solid;
+    margin-left: 15px;
+    padding: 5px;
+    
+  }

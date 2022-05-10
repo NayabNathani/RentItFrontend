@@ -1,3 +1,12 @@
+import React, { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom'
+import { Button } from "@material-ui/core";
+import logo from '../Index/image/Logo.png'
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import Footer from '../../components/footer'
+import CusHeader from '../../components/CustomerHeader/CustomerHeader' 
+import AdvSlider from '../../components/Adv-Slider/advSlider'
 import './css/style.css'
 import './css/responsive.css'
 import Header from '../../components/CustomerHeader/CustomerHeader'
@@ -16,6 +25,7 @@ import blog3 from "./image/blog/blog-3.jpg"
 function index() {
     return (
      <>
+      <CusHeader/>
 <Header/>
 <section className="banner_area">
     <div className="booking_table d_flex align-items-center">

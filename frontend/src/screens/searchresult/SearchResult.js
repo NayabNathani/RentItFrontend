@@ -24,7 +24,6 @@ function SearchResult({
         price: price,
         total: total
     })
-    console.log(id);
     // const handleOnSubmit = () => {
     //     console.log(history);
     //     history.push('/booking/' + id);
