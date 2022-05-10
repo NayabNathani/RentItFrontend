@@ -10,7 +10,6 @@ import AdvSignLogin from './components/Advertiser-sign-login/Adv-sign-login'
 import SearchPage from './screens/searchresult/SearchPage'
 import InsertApart from './screens/insertapart/InsertApart'
 import BookPage from './screens/bookpage/BookingPg'
-import AdvSlider from './components/Adv-Slider/advSlider'
 import ApartDetails from './screens/apartdetails/apartDetails'
 import HostHome from './screens/hosthomepage/hostSearchPage'
 import CusHome from './screens/customerhome/customerhome'
@@ -30,7 +29,7 @@ function App() {
           <Route path="/insertapart-page" element={< InsertApart/>} />
           <Route path="/apartdetails-page" element={< ApartDetails/>} />
           <Route path="/book-page" element={< BookPage/>} />
-          <Route path="/advSlider" element={< AdvSlider/>} />
+          {/* <Route path="/advSlider" element={< AdvSlider/>} /> */}
           <Route path="/hosthome" element={< HostHome/>} />
           <Route path="/cusHome" element={< CusHome/>} />
           </Routes>

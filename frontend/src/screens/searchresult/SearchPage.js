@@ -7,8 +7,8 @@ import logo from '../Index/image/Logo.png'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Footer from '../../components/footer'
-import AdvSlider from '../../components/Adv-Slider/advSlider'
 // import Header from './Header';
+import Ads from '../../components/AdvBox/advSlider'
 
 function SearchPage() {
     const [apartDetails, setApartDetails] = useState([]);
@@ -81,7 +81,7 @@ function SearchPage() {
   {/* HEADER AREA FINISH */}
 
   
-
+<Ads/>
   <div id='searchBody'>
     <br/><br/><br/><br/><br/>
             {/* <div className='searchPage__info'>
@@ -183,7 +183,6 @@ function SearchPage() {
         </div>
         
         </div>
-        {/* <AdvSlider/> */}
         
         <Footer/></>
     )
