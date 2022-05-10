@@ -179,7 +179,7 @@ function InsertApart() {
                     multiple
                 />
             </div>
-                <br/><br/>
+                
 
 
                 {/*Address*/}
@@ -191,10 +191,11 @@ function InsertApart() {
                 onChange={(e) => setAddress(e.target.value)}
                 />
                 </Form.Group>
-
+                <br/>
                 <label>
                 Place Type
-                <select className="types" value={type} onChange={(e) => {setType(e.target.value)}}>            
+                
+                <select className="types labelBorder" value={type} onChange={(e) => {setType(e.target.value)}}>            
                     <option value="cabin">Cabin</option>
                     <option value="apartment">Apartment</option>
                     <option value="house">House</option>
@@ -202,7 +203,7 @@ function InsertApart() {
                     <option value="condo">Condo</option>
                 </select>
                 </label>
-
+                <br/><br/>
                 {/*rooms*/}
                 <Form.Group size="lg" controlId="room">
                 <Form.Label>Rooms</Form.Label>

@@ -33,6 +33,7 @@ function HostSignLogin() {
         }).then(() => {
             alert("Insert Success");
         })
+        toggle(true);
       }
 
       async function handleSigninSubmit() {
