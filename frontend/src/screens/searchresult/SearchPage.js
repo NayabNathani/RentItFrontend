@@ -7,11 +7,7 @@ import logo from '../Index/image/Logo.png'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Footer from '../../components/footer'
-<<<<<<< HEAD
-=======
 import CusHeader from '../../components/CustomerHeader/CustomerHeader'
-import AdvSlider from '../../components/Adv-Slider/advSlider'
->>>>>>> master
 // import Header from './Header';
 import Ads from '../../components/AdvBox/advSlider'
 

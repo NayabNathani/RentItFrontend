@@ -6,11 +6,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Footer from '../../components/footer'
 import CusHeader from '../../components/CustomerHeader/CustomerHeader' 
-import AdvSlider from '../../components/Adv-Slider/advSlider'
 import './css/style.css'
 import './css/responsive.css'
 import Header from '../../components/CustomerHeader/CustomerHeader'
-import Footer from '../../components/footer'
 import about_bg from "./image/about_bg.jpg"
 import room1 from "./image/room1.jpg"
 import room2 from "./image/room2.jpg"
