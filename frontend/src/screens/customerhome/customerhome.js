@@ -1,22 +1,14 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom'
-import { Button } from "@material-ui/core";
-import logo from '../Index/image/Logo.png'
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import Footer from '../../components/footer'
 import CusHeader from '../../components/CustomerHeader/CustomerHeader' 
-import AdvSlider from '../../components/Adv-Slider/advSlider'
 import './css/style.css'
 import './css/responsive.css'
 import Header from '../../components/CustomerHeader/CustomerHeader'
-import Footer from '../../components/footer'
 import about_bg from "./image/about_bg.jpg"
 import room1 from "./image/room1.jpg"
 import room2 from "./image/room2.jpg"
 import room3 from "./image/room3.jpg"
 import room4 from "./image/room4.jpg"
-// import testtimonial1 from "./image/testtimonial-1.jpg"
 import blog1 from"./image/blog/blog-1.jpg"
 import blog2 from "./image/blog/blog-2.jpg"
 import blog3 from "./image/blog/blog-3.jpg"
