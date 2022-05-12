@@ -100,6 +100,9 @@ function BookingPg() {
 <>
 
 <CusHeader/>
+
+
+
 <section class="breadcrumb_area">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
@@ -110,6 +113,10 @@ function BookingPg() {
             </div>
         </section>
 
+        {/* ROOM INFO STARTS HERE */}
+
+<div class="row">
+<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
 <div class="bodyProduct">
 <section class="product">
 	<div class="product__photo">
@@ -238,15 +245,72 @@ function BookingPg() {
     </div>
   </div>
 </div>
-
-
-    
-	</div>
-</section>
 </div>
+</section></div></div>
+
+ {/* Product Card Area Starts Here */}
+ <div class="col-lg-4 mb-4 mb-lg-0">
+<div className='ProdCard'>
+<div class="justify-content-center mt-5">
+        <div class="card p-3 bg-white"><i class="fa fa-apple"></i>
+            <div class="about-product text-center mt-2"><img src={bd2} width="300"/>
+                <div>
+                    <h4>Believing is seeing</h4>
+                    <h6 class="mt-0 text-black-50">Beautiful Room</h6>
+                </div>
+            </div>
+            <div class="stats mt-2">
+                <div class="d-flex justify-content-between p-price"><span>Room Charges</span><span>Rs. 2599</span></div>
+                <div class="d-flex justify-content-between p-price"><span>Gst</span><span>13%</span></div>
+                <div class="d-flex justify-content-between p-price"><span>Our Charges</span><span>2%</span></div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>Rs. 2988.85</span></div>
+        </div>
+    </div>
+</div></div></div>
+
+
+{/* HOSTED BY CARD STARTS HERE */}
+
+<div class="cardAlign">
+
+            <div class="card p-3">
+
+                <div class="d-flex align-items-center">
+
+                    <div class="image">
+                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155" />
+                </div>
+
+                <div class="ml-3 w-100">
+                    
+                   <h4 class="mb-0 mt-0">Hosted By Nayab Nathani</h4>
+                   <span>Senior Front-end Developer</span>
+
+                   <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+                    <div class="d-flex flex-column">
+
+                        <span class="articles">Hello this is Nayab Nathani</span>
+                        {/* <span class="number1">38</span> */}
+                        
+                    </div>
+                       
+                   </div>
+
+
+                   {/* <div class="button mt-2 d-flex flex-row align-items-center">
+
+                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>
+                    <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>
+
+                       
+                   </div> */}
+
+
+                </div></div></div></div>
+
 <Footer/>
-
-
 
 
 </>

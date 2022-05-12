@@ -10,10 +10,11 @@ import AdvSignLogin from './components/Advertiser-sign-login/Adv-sign-login'
 import SearchPage from './screens/searchresult/SearchPage'
 import InsertApart from './screens/insertapart/InsertApart'
 import BookPage from './screens/bookpage/BookingPg'
-import AdvSlider from './components/Adv-Slider/advSlider'
 import ApartDetails from './screens/apartdetails/apartDetails'
 import HostHome from './screens/hosthomepage/hostSearchPage'
 import CusHome from './screens/customerhome/customerhome'
+import AdvIns from './screens/advinsert/AdvIns'
+import ViewAds from './screens/viewAds/ViewAds'
 
 function App() {
   return (
@@ -30,9 +31,10 @@ function App() {
           <Route path="/insertapart-page" element={< InsertApart/>} />
           <Route path="/apartdetails-page" element={< ApartDetails/>} />
           <Route path="/book-page" element={< BookPage/>} />
-          <Route path="/advSlider" element={< AdvSlider/>} />
           <Route path="/hosthome/:flag" element={< HostHome/>} exact/>
           <Route path="/cusHome" element={< CusHome/>} />
+          <Route path="/AdvInsert" element={< AdvIns/>} />
+          <Route path="/viewAds" element={< ViewAds/>} />
           </Routes>
       </Router>
     </div>

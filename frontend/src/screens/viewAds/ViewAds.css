@@ -1,0 +1,40 @@
+.containerInsert{
+    display: grid;
+    grid-template-rows: 1fr;
+    font-family: "Raleway", sans-serif;
+    /* margin-left: 70px; */
+    margin: auto;
+    width: 70%;
+    padding: 10%;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+.btn123{
+    border: 2px solid #f3c300;
+
+    color: white;
+    background-color: #f3c300;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+.paddingGallary{
+
+  padding-left: 30px;
+  margin: auto;
+}
