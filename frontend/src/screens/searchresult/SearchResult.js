@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './SearchResult.css';
 import { Image } from 'cloudinary-react';
+import { useNavigate } from 'react-router-dom';
 // import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 // import StarIcon from "@material-ui/icons/Star";
 // import { useHistory } from 'react-router-dom';
@@ -14,7 +15,7 @@ function SearchResult({
     price,
     total,
 }) {
-    // const history = useHistory();
+    const navigate = useNavigate();
     const [state, setState] = useState({
         id: id,
         img: img,
@@ -24,18 +25,16 @@ function SearchResult({
         price: price,
         total: total
     })
-    // const handleOnSubmit = () => {
-    //     console.log(history);
-    //     history.push('/booking/' + id);
-    //     console.log(id);
-    //     // '/booking/' + id
-    // };
+    const handleOnSubmit = () => {
+        navigate('/book-page/' + id + '/' + total);
+        // + id + '/' + total
+    };
     return (
         <>
         <div class='divBoxPos'>
-            <div className='searchResult' >
+            <div className='searchResult' onClick={handleOnSubmit}>
             {/* onClick = {handleOnSubmit} */}
-            <Image cloudName="teejayycloud" publicId={img} />
+            <Image cloudName="teejayycloud" publicId={img}/>
             {/* onClick = {handleOnSubmit} */}
             {/* <div className="searchResult__hearts">
                 <FavoriteBorderIcon className='searchResult_heart' />

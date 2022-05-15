@@ -30,7 +30,7 @@ function App() {
           <Route path="/search-page/:city/:flag" element={< SearchPage/>} />
           <Route path="/insertapart-page" element={< InsertApart/>} />
           <Route path="/apartdetails-page" element={< ApartDetails/>} />
-          <Route path="/book-page" element={< BookPage/>} />
+          <Route path="/book-page/:id/:total" element={< BookPage/>} />
           <Route path="/hosthome/:flag" element={< HostHome/>} exact/>
           <Route path="/cusHome" element={< CusHome/>} />
           <Route path="/AdvInsert" element={< AdvIns/>} />

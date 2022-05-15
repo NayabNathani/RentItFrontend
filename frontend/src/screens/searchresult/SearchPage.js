@@ -17,10 +17,15 @@ function SearchPage() {
     const params = useParams();
     useEffect(async () => {
         let userdata = JSON.parse(localStorage.getItem("userdata"));
+        let dates = JSON.parse(localStorage.getItem("Dates"));
+        let startDate = new Date(dates.start);
+        let endDate = new Date(dates.end);
         if(params.flag > '0'){
             let aparts = await axios.get("http://localhost:3001/customers/searchResults", {
             params: {
-                City: params.city
+                City: params.city,
+                startDate: startDate,
+                endDate: endDate
             }
             }); 
             if(aparts.data.statusCode == false) {
@@ -28,7 +33,9 @@ function SearchPage() {
                 setFlag(true);
             }
             else {
+                console.log(aparts);
                 setApartDetails(aparts.data);
+                console.log(apartDetails);
                 setFlag(false);
             }
         }
@@ -37,7 +44,7 @@ function SearchPage() {
             console.log("booked");
             let aparts = await axios.get("http://localhost:3001/customers/bookedapartments", {
                 params: {
-                    customerID: 16
+                    customerID: userdata.customerID
                 }
             });
             console.log(aparts);
@@ -56,6 +63,16 @@ function SearchPage() {
         }
     }
     ,[params.flag]) 
+
+    const totalPrice = (price) => {
+        const dates = JSON.parse(localStorage.getItem("Dates"));
+        let date1 = new Date(dates.start)
+        let date2 = new Date(dates.end); 
+        let diff = date2.getTime() - date1.getTime();
+        let total = 0;
+        total = (diff / (1000 * 3600 * 24));
+        return price * total
+    }
 
     return (
         <>
@@ -88,18 +105,11 @@ function SearchPage() {
                 title={apart.Title}
                 description={apart.Descrip}
                 price={apart.priceperday}
-                total={990}
-                // total={() => {
-                //     let date1 = JSON.parse(localStorage.getItem("start"));
-                //     let date2 = JSON.parse(localStorage.getItem("end")); 
-                //     let diff = date1.endDate.getTime() - date2.startDate.getTime();
-                //     let total = 0;
-                //     return (total = diff / (1000 * 3600 * 24));
-                // }}
+                total={totalPrice(apart.priceperday)}
             />
             ))}
                 {/* <br/><br/><br/><br/><br/> */}
-            <SearchResult
+            {/* <SearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
                 location="Private room in center of London"
                 title="Stay at this spacious Edwardian House"
@@ -163,7 +173,7 @@ function SearchPage() {
                 hearts={3.85}
                 price="£90"
                 total="£650 total"
-            />
+            /> */}
             <br/>
         </div>
         

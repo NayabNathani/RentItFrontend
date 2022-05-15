@@ -36,7 +36,7 @@ function HostSearchPage(props) {
             console.log("booked");
             let aparts = await axios.get("http://localhost:3001/hosts/bookedapartments", {
                 params: {
-                    HostID: 5
+                    HostID: userdata.HostID
                 }
             });
             console.log(aparts);

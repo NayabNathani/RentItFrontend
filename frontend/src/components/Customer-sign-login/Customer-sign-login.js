@@ -29,6 +29,7 @@ function CusSignLogin() {
           password: password
       }).then(() => {
           alert("Insert Success");
+          toggle(true);
       })
     }
 
@@ -46,15 +47,15 @@ function CusSignLogin() {
               password: password
             }
           })
-          //console.log(response);
+          console.log(response);
           if(Object.keys(response.data).length == 0){
               alert("Incorrect Email or Password!")
           } else {
           // set the state of the user
           setUser(response.data);
           console.log(user);
-          //localStorage.setItem("userdata", JSON.stringify(response.data));
-          //let userdata = JSON.parse(localStorage.getItem("userdata"));
+          localStorage.setItem("userdata", JSON.stringify(response.data));
+          navigate('/cusHome');
           }
       }
       catch(error) {
@@ -117,7 +118,7 @@ function CusSignLogin() {
           <Components.Input type="password" value = {password} placeholder="Password" onChange = {(e) => {setPassword(e.target.value)}}/>
           <Components.Anchor href="#">Forgot your password?</Components.Anchor>
           <Components.Button onClick = {(e) => {
-            if (validateSigninForm()) {
+            if (validateSigninForm) {
               console.log("Done");
               handleSigninSubmit();
             }
