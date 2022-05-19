@@ -33,6 +33,8 @@ function HostSignLogin() {
         }).then(() => {
             alert("Insert Success");
         })
+        setEmail("");
+        setPassword("");
         toggle(true);
       }
 
@@ -54,9 +56,6 @@ function HostSignLogin() {
             console.log(user);
             localStorage.setItem("userdata", JSON.stringify(response.data));
             navigate("/hosthome/" + 0);
-            //let userdata = JSON.parse(localStorage.getItem("userdata"));
-            //console.log(userdata.customerid)
-            // store the user in localStorage
             }
         }
         catch(error) {

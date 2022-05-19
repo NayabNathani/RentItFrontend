@@ -7,6 +7,8 @@ import { DateRangePicker } from "react-date-range";
 import './CustomerHeader.css';
 import { jssPreset } from '@material-ui/core';
 import axios from 'axios';
+import { getDate } from 'date-fns';
+
 
 function CusHeader() {
     const [startDate, setStartDate] = useState(new Date());

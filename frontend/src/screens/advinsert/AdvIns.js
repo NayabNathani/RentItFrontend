@@ -14,13 +14,12 @@ function InsertAdv() {
     const [previewSource, setPreviewSource] = useState('');
     const [Title, setTitle] = useState("");
     const [City, setCity] = useState("");
-    const [Descrip, setDescrip] = useState("");
-    const [HostID, setHostID] = useState();
-    const [priceperday, setPrice] = useState();
+    const [tagLine, setTagLine] = useState("");
     const [flag, setFlag] = useState(false);
+    const [area, setArea] = useState("");
 
     function validatForm() {
-        return Title.length > 0 && City.length > 0 && Descrip.length > 0 && priceperday.length > 0 && previewSource.length > 0;
+        return Title.length > 0 && tagLine.length > 0 && previewSource.length > 0;
     }
 
     const handleFileInputChange = (e) => {
@@ -52,10 +51,10 @@ function InsertAdv() {
         localStorage.setItem("apartInfo", JSON.stringify({
             image_info: base64EncodedImage,
             Title: Title,
-            Descrip: Descrip,
-            priceperday: priceperday,
+            TagLine: tagLine,
+            Area: area,
             City: City,
-            HostID: userdata.HostID
+            advertiserID: userdata.advertiserID
         }))
         console.log("done");
         navigate('/apartdetails-page');
@@ -119,14 +118,14 @@ function InsertAdv() {
                 <Form.Label>Tag Line</Form.Label>
                 <Form.Control
                 type="text"
-                value={Descrip}
-                onChange={(e) => setDescrip(e.target.value)}
+                value={tagLine}
+                onChange={(e) => setTagLine(e.target.value)}
                 />
                 </Form.Group>
 
                 {/*City*/}
                 <Form.Group size="lg" controlId="city">
-                <Form.Label>City</Form.Label>
+                <Form.Label>Preffered City</Form.Label>
                 <Form.Control
                 type="text"
                 value={City}
@@ -136,11 +135,11 @@ function InsertAdv() {
 
                 {/*Area*/}
                 <Form.Group size="lg" controlId="city">
-                <Form.Label>City</Form.Label>
+                <Form.Label>Preffered Area</Form.Label>
                 <Form.Control
                 type="text"
                 value={City}
-                onChange={(e) => setCity(e.target.value)}
+                onChange={(e) => setArea(e.target.value)}
                 />
                 </Form.Group>
                 <br/>
